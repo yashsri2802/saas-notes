@@ -100,7 +100,7 @@ Every user belongs to either Acme or Globex tenant. All data is automatically sc
 - **Free users** can create maximum 3 notes
 - When limit reached, "Upgrade to Pro" button appears
 - **Admin clicks upgrade** → redirected to dummy payment page
-- **After payment** → unlimited notes immediately available
+- **After clicking "Pay and Upgrade"** → unlimited notes immediately available
 
 ### Role Permissions
 - **Members** can only manage their notes
