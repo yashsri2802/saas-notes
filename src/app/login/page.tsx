@@ -28,40 +28,48 @@ export default function LoginPage() {
   }
 
   return (
-    <main
-      style={{
-        maxWidth: 420,
-        margin: "2rem auto",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <h1>Login</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label>Email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            style={{ width: "100%" }}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "100%" }}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {token && <p>Token saved to localStorage.</p>}
-      <p>
-        Test accounts: admin@acme.test, user@acme.test, admin@globex.test,
-        user@globex.test (password: password)
-      </p>
-    </main>
+    <section style={{ maxWidth: 560, margin: "0 auto" }}>
+      <div className="card" style={{ padding: 24 }}>
+        <h1 style={{ fontSize: 22, fontWeight: 600, marginBottom: 12 }}>
+          Welcome back
+        </h1>
+        <form onSubmit={onSubmit} style={{ display: "grid", gap: 16 }}>
+          <div style={{ display: "grid", gap: 6 }}>
+            <label style={{ fontSize: 12, color: "#475569" }}>Email</label>
+            <input
+              className="input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div style={{ display: "grid", gap: 6 }}>
+            <label style={{ fontSize: 12, color: "#475569" }}>Password</label>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+        </form>
+        {error && (
+          <p style={{ marginTop: 12, fontSize: 12, color: "#dc2626" }}>
+            {error}
+          </p>
+        )}
+        {token && (
+          <p style={{ marginTop: 12, fontSize: 12, color: "#059669" }}>
+            Token saved to localStorage.
+          </p>
+        )}
+        <p style={{ marginTop: 16, fontSize: 12, color: "#64748b" }}>
+          Test: admin@acme.test, user@acme.test, admin@globex.test,
+          user@globex.test (password: password)
+        </p>
+      </div>
+    </section>
   );
 }

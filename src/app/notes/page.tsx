@@ -125,96 +125,154 @@ export default function NotesPage() {
 
   if (!mounted) {
     return (
-      <main
-        style={{
-          maxWidth: 720,
-          margin: "2rem auto",
-          fontFamily: "system-ui,sans-serif",
-        }}
-      >
-        <h1>Notes</h1>
-      </main>
+      <section>
+        <h1 style={{ fontSize: 28, fontWeight: 600, marginBottom: 16 }}>
+          Notes
+        </h1>
+      </section>
     );
   }
 
   return (
-    <main
-      style={{
-        maxWidth: 720,
-        margin: "2rem auto",
-        fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <h1>Notes</h1>
+    <section style={{ display: "grid", gap: 16 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <h1 style={{ fontSize: 28, fontWeight: 600 }}>Notes</h1>
+        <a className="btn btn-outline" href="/upgrade">
+          Upgrade
+        </a>
+      </div>
       {!token && (
-        <p>
-          Please <a href="/login">login</a>.
+        <p style={{ color: "#475569" }}>
+          Please{" "}
+          <a
+            href="/login"
+            style={{ color: "#6d28d9", textDecoration: "underline" }}
+          >
+            login
+          </a>
+          .
         </p>
       )}
       {plan === "FREE" && notes.length >= 3 && (
         <div
           style={{
-            background: "#fff3cd",
-            padding: "1rem",
-            marginBottom: "1rem",
+            borderRadius: 14,
+            border: "1px solid #f59e0b33",
+            background: "#fffbeb",
+            padding: 16,
           }}
         >
-          <strong>Free plan limit reached.</strong> Upgrade to Pro for unlimited
-          notes.
-          <div>
-            <a href="/upgrade">
-              <button>Upgrade to Pro</button>
+          <p style={{ fontWeight: 600, color: "#92400e" }}>
+            Free plan limit reached.
+          </p>
+          <p style={{ color: "#b45309", fontSize: 14 }}>
+            Upgrade to Pro for unlimited notes.
+          </p>
+          <div style={{ marginTop: 8 }}>
+            <a className="btn btn-primary" href="/upgrade">
+              Upgrade to Pro
             </a>
           </div>
         </div>
       )}
-      <div>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          placeholder="Content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button
-          onClick={createNote}
-          disabled={plan === "FREE" && notes.length >= 3}
+      <div className="card" style={{ padding: 16, display: "grid", gap: 12 }}>
+        <div
+          style={{ display: "grid", gap: 40, gridTemplateColumns: "0.3fr 0.65fr" }}
         >
-          Create
-        </button>
+          <input
+            className="input"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="input"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+        <div>
+          <button
+            className="btn btn-primary"
+            onClick={createNote}
+            disabled={plan === "FREE" && notes.length >= 3}
+          >
+            Create
+          </button>
+        </div>
       </div>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <ul>
+      {error && <p style={{ fontSize: 12, color: "#dc2626" }}>{error}</p>}
+      <ul style={{ display: "grid", gap: 12 }}>
         {notes.map((n) => (
-          <li key={n.id}>
+          <li key={n.id} className="card" style={{ padding: 16 }}>
             {editId === n.id ? (
-              <span>
+              <div
+                style={{
+                  display: "grid",
+                  gap: 12,
+                  gridTemplateColumns: "1fr 1fr",
+                }}
+              >
                 <input
+                  className="input"
                   placeholder="Title"
                   value={editTitle}
                   onChange={(e) => setEditTitle(e.target.value)}
                 />
                 <input
+                  className="input"
                   placeholder="Content"
                   value={editContent}
                   onChange={(e) => setEditContent(e.target.value)}
                 />
-                <button onClick={saveEdit}>Save</button>
-                <button onClick={cancelEdit}>Cancel</button>
-              </span>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button className="btn btn-primary" onClick={saveEdit}>
+                    Save
+                  </button>
+                  <button className="btn btn-outline" onClick={cancelEdit}>
+                    Cancel
+                  </button>
+                </div>
+              </div>
             ) : (
-              <span>
-                <strong>{n.title}</strong> - {n.content}{" "}
-                <button onClick={() => startEdit(n)}>Edit</button>
-                <button onClick={() => deleteNote(n.id)}>Delete</button>
-              </span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  justifyContent: "space-between",
+                  gap: 12,
+                }}
+              >
+                <div>
+                  <p style={{ fontWeight: 600 }}>{n.title}</p>
+                  <p style={{ color: "#475569", fontSize: 14 }}>{n.content}</p>
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button
+                    className="btn btn-outline"
+                    onClick={() => startEdit(n)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-outline"
+                    onClick={() => deleteNote(n.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
             )}
           </li>
         ))}
       </ul>
-    </main>
+    </section>
   );
 }
