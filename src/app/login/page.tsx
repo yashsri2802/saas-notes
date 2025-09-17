@@ -62,7 +62,7 @@ export default function LoginPage() {
         )}
         {token && (
           <p style={{ marginTop: 12, fontSize: 12, color: "#059669" }}>
-            Token saved to localStorage.
+            Token saved to localStorage. Login Successful!
           </p>
         )}
         <p style={{ marginTop: 16, fontSize: 12, color: "#64748b" }}>
