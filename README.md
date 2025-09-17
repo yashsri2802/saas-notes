@@ -111,7 +111,7 @@ Every user belongs to either Acme or Globex tenant. All data is automatically sc
 Deployed on Vercel with CORS enabled for automated testing and external access.
 
 **Production URLs:**
-- Frontend: `[https://saas-notes.vercel.app](https://saas-notes-lac.vercel.app/)`
+- Frontend: `https://saas-notes-lac.vercel.app/`
 - Base URL: `https://saas-notes.vercel.app/api/health`
 
 ## 📋 Scripts
