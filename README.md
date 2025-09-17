@@ -35,9 +35,9 @@ This application uses a **shared schema with tenant ID** approach for multi-tena
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS
+- **Frontend**: Next.js 14, React 18, TypeScript, CSS
 - **Backend**: Next.js API Routes, Prisma ORM, JWT Authentication
-- **Database**: PostgreSQL with tenant isolation
+- **Database**: PostgreSQL hosted on Supabase with tenant isolation
 - **Deployment**: Vercel
 
 ## 🚀 Quick Setup
