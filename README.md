@@ -112,7 +112,7 @@ Deployed on Vercel with CORS enabled for automated testing and external access.
 
 **Production URLs:**
 - Frontend: `https://saas-notes-lac.vercel.app/`
-- Base URL: `https://saas-notes.vercel.app/api/health`
+- Base URL: `https://saas-notes-lac.vercel.app/api/health`
 
 ## 📋 Scripts
 
